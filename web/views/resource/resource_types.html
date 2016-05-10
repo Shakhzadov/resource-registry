@@ -1,43 +1,118 @@
 <div class="container-fluid" ng-if="currentUser.role === 'admin'">
-    <div class="col-md-6">
-        <div>
-            <div class="md-list-group">
-                <ul class="list-group">
-                    <li class="list-group-item row">
-                        <div class="col-md-12 navigation-search">
-                                <input type="text" value="" class="form-control col-md-4" ng-model="pp.addClassInput" placeholder="назва нового класу">
-                                <a class="btn btn-material-amber-400 col-md-4" ng-click="pp.addClass()" href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    ДОДАТИ
-                                </a>
-                        </div>
-                        <div class="row" >
-                            <div class="col-md-4 text-center"><h4>Ідентифікатор класу</h4></div>
-                            <div class=" col-md-4 text-center"><h4>Назва класу</h4></div>
-                        </div>
-                    </li>
-                    <li class="list-group-item shadow-z-1 md-list row " style="padding:0px 5px 0px 5px!important;" ng-repeat="data in pp.classes">
-                        <div class="col-md-4 text-center res_vert_allight_list">{{data.class_id}}</div>
-                        <div class="col-md-4 text-center res_vert_allight_list">{{data.name}}</div>
-                        <div class="btn-group">
-                            <a class="btn btn-primary ng-scope" href="resource/update/{{data.resource_id}}" title="Редагувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            </a>
-                            <a class="btn btn-material-grey-200 text-center ng-scope" title="Деактивувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined" ng-click="pp.del(data.class_id)">
-                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                            </a>
-                            </a>
-                            <a class="btn btn-material-grey-200 text-center ng-scope" title="Активувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined" ng-click="pp.del(data.class_id)">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+    
+    
+    <style>
+      /* Icon when the collapsible content is shown */
+      .btn:after {
+        font-family: "Glyphicons Halflings";
+        content: "\e114";
+        float: right;
+        margin-left: 15px;
+      }
+      /* Icon when the collapsible content is hidden */
+      .btn.collapsed:after {
+        content: "\e080";
+      }
+    </style>
 
+
+    <div class="container" id="accordion">
+        <h2>Типи ресурсів</h2>
+        <div ng-repeat="data in pp.classes">
+            <div>
+            <div class="btn btn-lg btn-primary collapsed col-sm-12" data-toggle="collapse" data-target="{{'#demo' + data.class_id}}">{{data.class_id}} {{data.name}}</div>
+            </div>
+            <div id="{{'demo' + data.class_id}}" class="collapse">
+                {{data.class_id}}
+            </div>
         </div>
+
+    </div>  
+
+
+<!-- <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+<!--
+<div class="col-md-6">
+    <div>
+        <div class="md-list-group">
+            <ul class="list-group">
+                <li class="list-group-item row">
+                    <div class="col-md-12 navigation-search">
+                            <input type="text" value="" class="form-control col-md-4" ng-model="pp.addClassInput" placeholder="назва нового класу">
+                            <a class="btn btn-material-amber-400 col-md-4" ng-click="pp.addClass()" href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                ДОДАТИ
+                            </a>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-4 text-center"><h4>Ідентифікатор класу</h4></div>
+                        <div class=" col-md-4 text-center"><h4>Назва класу</h4></div>
+                    </div>
+                </li>
+                <li class="list-group-item shadow-z-1 md-list row " style="padding:0px 5px 0px 5px!important;" ng-repeat="data in pp.classes">
+                    <div class="col-md-4 text-center res_vert_allight_list">{{data.class_id}}</div>
+                    <div class="col-md-4 text-center res_vert_allight_list">{{data.name}}</div>
+                    <div class="btn-group">
+                        <a class="btn btn-primary ng-scope" href="resource/update/{{data.resource_id}}" title="Редагувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </a>
+                        <a class="btn btn-material-grey-200 text-center ng-scope" title="Деактивувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined" ng-click="pp.del(data.class_id)">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </a>
+                        </a>
+                        <a class="btn btn-material-grey-200 text-center ng-scope" title="Активувати" ng-if="currentUser.role === 'admin' &amp;&amp; currentUser.isLogined" ng-click="pp.del(data.class_id)">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </div>
 
 <div ng-show="resources.length === 0">
     There are no resources
 </div>
+-->

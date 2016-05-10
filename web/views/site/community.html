@@ -71,44 +71,27 @@
 					</div>
 				</li>
 			</ul>
-			
-
-
 			<div class="col-md-8 margin_bottom">          
-                    <ul class="pagination pagination-sm" ng-if="communities._meta.pageCount > 1">
-
-                        <li ng-if="communities._links.first">
-                            <a href="" ng-click="setPage(communities._links.first.href, 'first')">&laquo;</a>
-                        </li>
-                        <li ng-if="communities._links.prev">
-                            <a href="" ng-click="setPage(communities._links.prev.href, 'prev')" >‹</a>
-                        </li>
-
-
-
-                        <li ng-repeat="page in getPages(communities._meta.pageCount) track by $index"
-                            ng-click="switchPage(page)" ng-class="{active: page == currentPage}"
-                            ng-if="page">
-                            <span>{{page}}</span>
-                        </li>
-
-					
-
-                        <li ng-if="communities._links.next">
-                            <a href="" ng-click="setPage(communities._links.next.href, 'next')" >›</a>
-                        </li>
-                        <li ng-if="communities._links.last">
-                            <a href="" ng-click="setPage(communities._links.last.href, 'last')">&raquo;</a>
-                        </li>
-                    </ul>
+                <ul class="pagination pagination-sm" ng-if="communities._meta.pageCount > 1">
+                    <li ng-if="communities._links.first">
+                        <a href="" ng-click="setPage(communities._links.first.href, 'first')">&laquo;</a>
+                    </li>
+                    <li ng-if="communities._links.prev">
+                        <a href="" ng-click="setPage(communities._links.prev.href, 'prev')" >‹</a>
+                    </li>
+                    <li ng-repeat="page in getPages(communities._meta.pageCount) track by $index"
+                        ng-click="switchPage(page)" ng-class="{active: page == currentPage}"
+                        ng-if="page">
+                        <span>{{page}}</span>
+                    </li>
+                    <li ng-if="communities._links.next">
+                        <a href="" ng-click="setPage(communities._links.next.href, 'next')" >›</a>
+                    </li>
+                    <li ng-if="communities._links.last">
+                        <a href="" ng-click="setPage(communities._links.last.href, 'last')">&raquo;</a>
+                    </li>
+                </ul>
            </div>  
 		</div>
 	</div>
-
-
-
-
-
-
-
 </div>
