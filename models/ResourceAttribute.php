@@ -30,7 +30,9 @@ class ResourceAttribute extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 60]
+            [['name'], 'string', 'max' => 60],
+            [['global_status'], 'required'],
+            [['global_status'], 'integer']
         ];
     }
 
@@ -42,6 +44,7 @@ class ResourceAttribute extends \yii\db\ActiveRecord
         return [
             'attribute_id' => 'Attribute ID',
             'name' => 'Name',
+            'global_status' => 'Global Status'
         ];
     }
 

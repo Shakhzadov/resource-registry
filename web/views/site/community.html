@@ -46,18 +46,18 @@
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div class="row">
-						<div class="col-lg-4">Назва громади</div>
-						<div class="col-lg-2">Номер тому</div>
-						<div class="col-lg-4">Уповноважений</div>
-						<div class="col-lg-2">Дії</div>
+						<div class="col-lg-4 col-md-4 col-sm-4">Назва громади</div>
+						<div class="col-lg-2 col-md-2 col-sm-2">Номер тому</div>
+						<div class="col-lg-4 col-md-4 col-sm-4">Додатково</div>
+						<div class="col-lg-2 col-md-2 col-sm-2">Дії</div>
 					</div>
 				</li>
-				<li class="list-group-item" ng-repeat="data in communities.items">
+				<li class="list-group-item" ng-repeat="data in xmlData.items">
 					<div class="row">
-						<div class="col-lg-4">{{data.name}}</div>
-						<div class="col-lg-2">{{data.prefix}}</div>
-						<div class="col-lg-4">{{data.username}}</div>
-						<div class="col-lg-2">
+						<div class="col-lg-4 col-md-4 col-sm-4">{{data.name}}</div>
+						<div class="col-lg-2 col-md-2 col-sm-2">{{data.prefix}}</div>
+						<div class="col-lg-4 col-md-4 col-sm-4">{{data.notes}}</div>
+						<div class="col-lg-2 col-md-2 col-sm-2">
 							<div class="btn-group">
 
 								<a class="btn btn-primary ng-scope" title="Редагувати" href="resource/update/185" ng-if="currentUser.role === 'registrar' &amp;&amp; currentUser.isLogined">
@@ -71,27 +71,19 @@
 					</div>
 				</li>
 			</ul>
+			
+
+
 			<div class="col-md-8 margin_bottom">          
-                <ul class="pagination pagination-sm" ng-if="communities._meta.pageCount > 1">
-                    <li ng-if="communities._links.first">
-                        <a href="" ng-click="setPage(communities._links.first.href, 'first')">&laquo;</a>
-                    </li>
-                    <li ng-if="communities._links.prev">
-                        <a href="" ng-click="setPage(communities._links.prev.href, 'prev')" >‹</a>
-                    </li>
-                    <li ng-repeat="page in getPages(communities._meta.pageCount) track by $index"
-                        ng-click="switchPage(page)" ng-class="{active: page == currentPage}"
-                        ng-if="page">
-                        <span>{{page}}</span>
-                    </li>
-                    <li ng-if="communities._links.next">
-                        <a href="" ng-click="setPage(communities._links.next.href, 'next')" >›</a>
-                    </li>
-                    <li ng-if="communities._links.last">
-                        <a href="" ng-click="setPage(communities._links.last.href, 'last')">&raquo;</a>
-                    </li>
-                </ul>
+                    <pagination-directive></pagination-directive>
            </div>  
 		</div>
 	</div>
+
+
+
+
+
+
+
 </div>

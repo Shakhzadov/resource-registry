@@ -26,7 +26,7 @@
 
 	<div class="container well">
 		<div class="row">
-			<div class="col-lg-10">
+			<div class="col-lg-10 col-md-6 col-sm-6">
 				<ng-form>
 					<span>Пошук користувачів &nbsp</span>
 					<input type="text" class="community-search" ng-model="userSearch" ng-enter="searchUser(userSearch)"/>
@@ -34,10 +34,9 @@
 				</ng-form>
 				<a class="btn btn-primary ng-scope" title="Сортувати" ng-click="sortName()">СОРТУВАТИ <span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-2 col-md-6 col-sm-6">
 				<a class="btn btn-material-amber-400 ng-scope" href="#" ng-if="currentUser.role === 'registrar' &amp;&amp; currentUser.isLogined">ДОДАТИ <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 			</div>
-			
 		</div>
 	</div>	
 	<div class="container well">
@@ -45,9 +44,9 @@
 			<ul class="list-group">
 				<li class="list-group-item">
 					<div class="row">
-						<div class="col-lg-4">Прізвище та ім'я</div>
-						<div class="col-lg-3">Логін</div>
-						<div class="col-lg-3">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Прізвище та ім'я</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Логін</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 							<select ng-model="roleFilter" ng-change="filterRole(roleFilter)">
 								<option value="">Всі користувачі</option>
 				            	<option value="admin">Адміністратор</option>
@@ -56,20 +55,20 @@
 				            	<option value="commissioner">Уповноважений</option>
 				            </select>
 				        </div>
-						<div class="col-lg-2">Дії</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Дії</div>
 					</div>
 				</li>
 				<li class="list-group-item" ng-repeat="data in list_users.items">
 					<div class="row">
-						<div class="col-lg-4">{{data.last_name}} {{data.first_name}}</div>
-						<div class="col-lg-3">{{data.username}}</div>
-						<div class="col-lg-3">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">{{data.last_name}} {{data.first_name}}</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">{{data.username}}</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 							<select id="user-role-selector" ng-model="changeRoleId" ng-change="changeRole(changeRoleId, data.user_id)">
 				        		<option value="{{item.role_id}}" selected hidden>{{data.role_name}}</option>
 				        		<option ng-repeat="item in roleFound" value="{{item.role_id}}" ng-hide="data.role_name == item.role_name">{{item.role_name}}</option>
 				        	</select>
 				        </div>
-						<div class="col-lg-2">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 							<div class="btn-group">
 								<a class="btn btn-primary ng-scope" title="Редагувати" href="#" ng-if="currentUser.role === 'registrar' &amp;&amp; currentUser.isLogined"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							 	</a>
