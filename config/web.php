@@ -53,7 +53,8 @@ $config = [
                     'GET changeactivationstatus' => 'changeactivationstatus',
                     'GET getrole' => 'getrole',
                     'GET changeactivationstatus2' => 'changeactivationstatus2',
-                    'GET attributeclassview' => 'attributeclassview'
+                    'GET attributeclassview' => 'attributeclassview',
+                    'GET resourceattribute' => 'resourceattribute'
                     ],
                 ],
             ],

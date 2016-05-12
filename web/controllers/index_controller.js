@@ -6,8 +6,9 @@
         var pp = this;
             pp.obj = 1;
             pp.classes = [];
+            pp.attributes = [];
 
-            console.log('pp');
+            // console.log('pp');
 
             (function(){
                 return $http.get('rest.php/resource_classes')
@@ -16,6 +17,20 @@
                 function successHandler(result) {
                     console.log(result);
                     pp.classes = result.data;
+                }
+                function errorHandler(result){
+                    alert(result.data[0].message);
+                    console.log(result.data[0].message);
+                }
+            }());
+
+            (function(){
+                return $http.get('http://rr.com/rest.php/attribute_class_views/attributeclassview')
+                    .then(successHandler)
+                    .catch(errorHandler);
+                function successHandler(result) {
+                    console.log(result);
+                    pp.attributes = result.data;
                 }
                 function errorHandler(result){
                     alert(result.data[0].message);
@@ -60,6 +75,9 @@
                     }
                 }());
             }
+
+            
+
         }]);
 
 

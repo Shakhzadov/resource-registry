@@ -68,11 +68,11 @@
             controllerAs: 'pp',
             templateUrl: 'views/resource/resource_types.html'
         })
-        .when('/resource/type/attributes', {
-            // controller: 'IndexCtrl',
-            // controllerAs: 'pp',
-            templateUrl: 'views/resource/resource_type_attributes.html'
-        })
+        // .when('/resource/type/attributes', {
+        //     // controller: 'IndexCtrl',
+        //     // controllerAs: 'pp',
+        //     templateUrl: 'views/resource/resource_type_attributes.html'
+        // })
         .when('/site/users', {
             controller: 'UsersController',
             controllerAs: 'list',

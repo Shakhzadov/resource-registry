@@ -55,7 +55,7 @@ class Attribute_class_viewController extends ActiveController
     $request= \Yii::$app->request->get();
 
     $classattribute = AttributeClassView::find()
-        ->select(['attribute_class_view.class_id as classId','resource_class.name as className','attribute_class_view.attribute_id as attributeId', 'resource_attribute.name as attributeName'])
+        ->select(['resource_class.class_id as classId','resource_class.name as className','attribute_class_view.attribute_id as attributeId', 'resource_attribute.name as attributeName'])
         ->innerJoinWith('resourceClass')->innerJoinWith('resourceAttribute')
         // ->andFilterWhere($filters)
         // ->andFilterWhere(['like', 'activated', $request['activated']])

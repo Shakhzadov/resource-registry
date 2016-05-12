@@ -1,6 +1,6 @@
 <div class="container-fluid" ng-if="currentUser.role === 'admin'">
     
-  <!-- 
+  
     <style>
       /* Icon when the collapsible content is shown */
       .btn:after {
@@ -21,19 +21,19 @@
     </style>
 
 
-    <div class="container" id="accordion">
+    <div class="container" >
         <h2 class="header">Типи ресурсів</h2>
         <div ng-repeat="data in pp.classes">
             <div>
-            <div class="btn btn-lg btn-primary collapsed col-sm-12" data-toggle="collapse" data-target="{{'#demo' + data.class_id}}">{{$index+1}} {{data.name}}</div>
+            <div class="btn btn-md btn-primary collapsed col-sm-12" data-toggle="collapse" data-target="{{'#demo' + data.class_id}}">{{$index+1}} {{data.name}}</div>
             </div>
             <div id="{{'demo' + data.class_id}}" class="collapse">
-                {{data.class_id}}
+                <!-- {{data.class_id}} -->
+                <button type="button" class="btn btn-primary">Додати атрибути <span class="glyphicon glyphicon-plus"></span></button>
             </div>
         </div>
-
     </div>  
-  -->
+</div>
 
 <!-- <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
@@ -75,7 +75,7 @@
 </div> -->
 
 
-<div class="col-md-6">
+<!-- <div class="col-md-6">
     <div>
         <div class="md-list-group">
             <ul class="list-group">
@@ -116,3 +116,4 @@
 <div ng-show="resources.length === 0">
     There are no resources
 </div>
+ -->

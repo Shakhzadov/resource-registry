@@ -2,6 +2,10 @@
 namespace app\controllers;
 
 use yii\rest\ActiveController;
+use yii\data\ActiveDataProvider;
+use app\models\AttributeClassView;
+use app\models\ResourceAttribute;
+use app\models\ResourceClass;
 
 class Resource_attributeController extends ActiveController
 {
@@ -44,4 +48,26 @@ class Resource_attributeController extends ActiveController
     		throw new \yii\web\HttpException(400, 'There are no query string');
     	}
     }
+
+    public function actionResourceattribute(){
+    $request= \Yii::$app->request->get();
+
+    $resourceattribute = ResourceAttribute::find()
+        ->select(['resource_attribute.attribute_id as attribute_Id','resourceattribute.name as attributeName'])
+        ->innerJoinWith('resourceClass')->innerJoinWith('resourceAttribute')
+        
+        // ->andFilterWhere(['like', 'activated', $request['activated']])
+        // ->orderBy($sort)
+        ->asArray();
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $resourceattribute,
+            'pagination' => [
+                'pageSize' => 30,
+                'pageParam' => 'page',
+            ],
+        ]);
+        return $dataProvider;
+    }
+
 }
